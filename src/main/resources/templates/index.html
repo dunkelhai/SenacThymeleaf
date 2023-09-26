@@ -8,7 +8,7 @@
 <h1>Lista de Nomes</h1>
 <ul>
     <li th:each="pessoa : ${pessoas}">
-        <span th:text="${pessoa.nome}"></span>
+        <span th:if="${pessoa.nome eq 'Alice'}" th:text="${pessoa.nome}"></span>
     </li>
 </ul>
 </body>
