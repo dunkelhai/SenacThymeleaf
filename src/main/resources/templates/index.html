@@ -5,10 +5,14 @@
     <title>Exemplo de Thymeleaf</title>
 </head>
 <body>
-<h1>Lista de Nomes</h1>
+<h1>Lista de Pessoas</h1>
+<form action="/adicionar" method="post">
+    <input type="text" name="nome" placeholder="Digite um nome" />
+    <button type="submit">Adicionar</button>
+</form>
 <ul>
     <li th:each="pessoa : ${pessoas}">
-        <span th:if="${pessoa.nome eq 'Alice'}" th:text="${pessoa.nome}"></span>
+        <span th:text="${pessoa.nome}"></span>
     </li>
 </ul>
 </body>
