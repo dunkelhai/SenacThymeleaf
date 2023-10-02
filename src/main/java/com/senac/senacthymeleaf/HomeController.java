@@ -6,22 +6,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 @Controller
 public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-        // Crie uma lista de nomes
+        Scanner entrada = new Scanner(System.in);
         List<Pessoa> pessoas = new ArrayList<>();
-        pessoas.add(new Pessoa("Alice"));
-        pessoas.add(new Pessoa("Bob"));
-        pessoas.add(new Pessoa("Carol"));
+        boolean continuar = false;
+        do {
+            System.out.println("Digite um nome:");
+            String nome = entrada.nextLine();
+            pessoas.add(new Pessoa(nome));
+            System.out.println("Continuar?");
+            continuar = entrada.nextBoolean();
+        } while(continuar);
 
-        // Adicione a lista ao modelo
         model.addAttribute("pessoas", pessoas);
 
-        // Retorne o nome do arquivo HTML Thymeleaf (por padrão, ele procura em src/main/resources/templates)
         return "index";
     }
 }
